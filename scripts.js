@@ -1,5 +1,13 @@
 const Gameboard = (() => {
-    const board = Array(9);
+    const board = [];
 
-    return board
-})();
+    for (i = 0; i < 9; i++){
+        board.push([i+1]);
+    }
+
+    return board;
+});
+
+function Player(name, score){
+    return {name , score};
+}
