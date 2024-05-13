@@ -16,9 +16,10 @@ const Gameboard = {
 };
 
 const gameLogic = {
-  gamePlay: () => {
-    gb = Gameboard;
-    gb.makeBoard();
-    gb.showBoard();
+  gb: Gameboard,
+
+  startGame() {
+    this.gb.makeBoard();
+    this.gb.showBoard();
   },
 };
