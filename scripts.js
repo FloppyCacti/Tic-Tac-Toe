@@ -1,13 +1,10 @@
-const Gameboard = (() => {
-    const board = [];
+const Gameboard = {
+  board: [],
 
-    for (i = 0; i < 9; i++){
-        board.push([i+1]);
+  showBoard() {
+    for (i = 0; i < 9; i++) {
+      this.board.push([i]);
     }
-
-    return board;
-});
-
-function Player(name, score){
-    return {name , score};
-}
+    return this.board;
+  },
+};
