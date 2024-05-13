@@ -14,3 +14,11 @@ const Gameboard = {
     return this.board;
   },
 };
+
+const gameLogic = {
+  gamePlay: () => {
+    gb = Gameboard;
+    gb.makeBoard();
+    gb.showBoard();
+  },
+};
