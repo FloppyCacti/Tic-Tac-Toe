@@ -19,6 +19,17 @@ const gameLogic = {
   gb: Gameboard,
 
   startGame() {
-    this.gb.showBoard();
+    newBoard = () => {
+      values = [];
+      this.gb.makeBoard();
+
+      for (let i = 0; i < 3; i++) {
+        values.push(this.gb.board.splice(0, 3));
+      }
+
+      console.log(values);
+    };
+
+    newBoard();
   },
 };
