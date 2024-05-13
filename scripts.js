@@ -2,8 +2,8 @@ const Gameboard = {
   board: [],
 
   makeBoard() {
-    for (i = 0; i < 9; i++) {
-      this.board.push([i]);
+    for (let i = 0; i < 9; i++) {
+      this.board.push(i);
     }
   },
 
@@ -11,7 +11,7 @@ const Gameboard = {
     if (this.board.length == 0) {
       this.makeBoard();
     }
-    return this.board;
+    console.log(this.board);
   },
 };
 
@@ -19,7 +19,6 @@ const gameLogic = {
   gb: Gameboard,
 
   startGame() {
-    this.gb.makeBoard();
     this.gb.showBoard();
   },
 };
