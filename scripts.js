@@ -22,7 +22,6 @@ function gameFlow() {
   let num = 0;
   let winner = { isFound: false, person: "" };
   const player1 = player();
-  const player2 = player();
 
   function userInput() {
     const [a, b, c] = prompt("ENTER HERE:").split(" ");
@@ -67,7 +66,9 @@ function gameFlow() {
   }
 
   if (winner.isFound) {
-    console.log(`WINNER is ${winner.person}`);
+    if (winner.person == player1.sign) {
+      console.log(`WINNER is ${player1.name}`);
+    }
   }
 }
 
