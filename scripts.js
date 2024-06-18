@@ -10,10 +10,19 @@ function gameBoard() {
   return board;
 }
 
+function player() {
+  const name = prompt("NAME:");
+  const sign = prompt("INSERT THE SIGN YOU WANT:");
+
+  return { name, sign };
+}
+
 function gameFlow() {
   const board = gameBoard();
   let num = 0;
   let winner = { isFound: false, person: "" };
+  const player1 = player();
+  const player2 = player();
 
   function userInput() {
     const [a, b, c] = prompt("ENTER HERE:").split(" ");
