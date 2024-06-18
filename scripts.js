@@ -21,8 +21,8 @@ function player() {
 
 function gameFlow() {
   const board = gameBoard();
-  // let player1 = player();
-  // let player2 = player();
+  let player1 = player();
+  let player2 = player();
   let winner = { isFound: false, person: "" };
   let player1Turn = true;
   document.getElementById("reset").addEventListener("click", () => {
@@ -61,9 +61,9 @@ function gameFlow() {
     }
     if (winner.isFound) {
       if (winner.person == "⭕️") {
-        // console.log(`WINNER is ${player2.name}`);
+        alert(`Winner is ${player1.name}`);
       } else {
-        // console.log(`WINNER is ${player1.name}`);
+        alert(`WINNER is ${player2.name}`);
       }
     }
   }
