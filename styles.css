@@ -5,6 +5,7 @@ body {
   align-items: center;
   height: 80vh;
   background-color: black;
+  font-family: "roboto";
 }
 
 h1 {
