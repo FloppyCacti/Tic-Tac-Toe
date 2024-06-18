@@ -21,10 +21,14 @@ function player() {
 
 function gameFlow() {
   const board = gameBoard();
-  let player1 = player();
-  let player2 = player();
+  // let player1 = player();
+  // let player2 = player();
   let winner = { isFound: false, person: "" };
   let player1Turn = true;
+  document.getElementById("reset").addEventListener("click", () => {
+    document.getElementById("boardContainer").innerHTML = "";
+    gameFlow();
+  });
 
   function userInput(a, b, c) {
     if (board[a][b] === " ") {
@@ -57,9 +61,9 @@ function gameFlow() {
     }
     if (winner.isFound) {
       if (winner.person == "⭕️") {
-        console.log(`WINNER is ${player2.name}`);
+        // console.log(`WINNER is ${player2.name}`);
       } else {
-        console.log(`WINNER is ${player1.name}`);
+        // console.log(`WINNER is ${player1.name}`);
       }
     }
   }
@@ -70,7 +74,7 @@ function gameFlow() {
     for (let i = 0; i < 3; i++) {
       let row = document.createElement("div");
       row.style.width = div.offsetWidth + "px";
-      row.style.height = div.offsetHeight / 3 + "px";
+      row.style.height = div.offsetHeight + "px";
       row.style.boxSizing = "border-box";
       row.style.display = "flex";
       row.style.display = "row";
