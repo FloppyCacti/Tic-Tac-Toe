@@ -1,5 +1,5 @@
 function gameBoard() {
-  board = [];
+  const board = [];
   for (let i = 0; i < 3; i++) {
     let row = [];
     for (let j = 0; j < 3; j++) {
@@ -7,11 +7,59 @@ function gameBoard() {
     }
     board.push(row);
   }
-  return { board };
+  return board;
 }
 
-// function player() {}
+function gameFlow() {
+  const board = gameBoard();
+  let num = 0;
+  let winner = { isFound: false, person: "" };
 
-// function gameFlow() {}
+  function userInput() {
+    const [a, b, c] = prompt("ENTER HERE:").split(" ");
+    if (board[a][b] === " ") {
+      board[a][b] = c;
+    } else {
+      console.log("error 1");
+    }
+    console.log(board);
+  }
 
-console.log(gameBoard());
+  function checkWinner() {
+    for (let i = 0; i < 3; i++) {
+      if (board[i][0] === board[i][1] && board[i][0] === board[i][2] && board[i][0] !== " ") {
+        winner.isFound = true;
+        winner.person = board[i][0];
+      }
+      if (board[0][i] === board[1][i] && board[0][i] == board[2][i] && board[0][i] !== " ") {
+        winner.isFound = true;
+        winner.person = board[0][i];
+      }
+    }
+
+    if (board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== " ") {
+      winner.isFound = true;
+      winner.person = board[0][0];
+    }
+    if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[2][0] !== " ") {
+      winner.isFound = true;
+      winner.person = board[0][2];
+    }
+  }
+
+  while (num < 9) {
+    if (!winner.isFound) {
+      userInput();
+      checkWinner();
+    } else {
+      break;
+    }
+    num++;
+  }
+
+  if (winner.isFound) {
+    console.log(`WINNER is ${winner.person}`);
+  }
+}
+
+gameFlow();
