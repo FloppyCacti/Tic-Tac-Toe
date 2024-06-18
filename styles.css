@@ -3,11 +3,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
+}
+
+h1 {
+  flex: 1;
 }
 
 #boardContainer {
-  width: 50%;
+  flex: 5;
+  width: 70%;
   height: 50%;
   background-color: aquamarine;
 }
