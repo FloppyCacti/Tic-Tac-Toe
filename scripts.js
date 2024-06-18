@@ -12,19 +12,18 @@ function gameBoard() {
 
 function player() {
   const name = prompt("NAME:");
-  const sign = prompt("INSERT THE SIGN YOU WANT:");
 
-  return { name, sign };
+  return { name };
 }
 
 function gameFlow() {
   const board = gameBoard();
-  let num = 0;
+  let player1 = player();
+  let player2 = player();
   let winner = { isFound: false, person: "" };
   let player1Turn = true;
 
   function userInput(a, b, c) {
-    // const [a, b, c] = prompt("ENTER HERE:").split(" ");
     if (board[a][b] === " ") {
       board[a][b] = c;
       player1Turn = !player1Turn;
@@ -52,6 +51,13 @@ function gameFlow() {
     if (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[2][0] !== " ") {
       winner.isFound = true;
       winner.person = board[0][2];
+    }
+    if (winner.isFound) {
+      if (winner.person == "⭕️") {
+        console.log(`WINNER is ${player2.name}`);
+      } else {
+        console.log(`WINNER is ${player1.name}`);
+      }
     }
   }
 
@@ -82,27 +88,12 @@ function gameFlow() {
 
           userInput(rowIndex, sqrIndex, player1Turn ? "❌" : "⭕️");
           sqr.innerHTML = board[rowIndex][sqrIndex];
+          checkWinner();
         });
         row.appendChild(sqr);
       }
     }
   }
-
-  // while (num < 9) {
-  //   if (!winner.isFound) {
-  //     userInput();
-  //     checkWinner();
-  //   } else {
-  //     break;
-  //   }
-  //   num++;
-  // }
-
-  // if (winner.isFound) {
-  //   if (winner.person == player1.sign) {
-  //     console.log(`WINNER is ${player1.name}`);
-  //   }
-  // }
   drawBoard();
 }
 
