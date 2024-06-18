@@ -11,7 +11,10 @@ function gameBoard() {
 }
 
 function player() {
-  const name = prompt("NAME:");
+  let name = prompt("NAME:");
+  while (name === null || name.trim() === "") {
+    name = prompt("NAME cannot be empty:");
+  }
 
   return { name };
 }
