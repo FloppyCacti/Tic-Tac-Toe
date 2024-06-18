@@ -10,4 +10,8 @@ function gameBoard() {
   return { board };
 }
 
+// function player() {}
+
+// function gameFlow() {}
+
 console.log(gameBoard());
