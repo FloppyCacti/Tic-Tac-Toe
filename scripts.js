@@ -21,16 +21,16 @@ function gameFlow() {
   const board = gameBoard();
   let num = 0;
   let winner = { isFound: false, person: "" };
-  const player1 = player();
+  let player1Turn = true;
 
-  function userInput() {
-    const [a, b, c] = prompt("ENTER HERE:").split(" ");
+  function userInput(a, b, c) {
+    // const [a, b, c] = prompt("ENTER HERE:").split(" ");
     if (board[a][b] === " ") {
       board[a][b] = c;
-    } else {
+      player1Turn = !player1Turn;
+    } else if (board[a][b] !== " ") {
       console.log("error 1");
     }
-    console.log(board);
   }
 
   function checkWinner() {
@@ -55,21 +55,55 @@ function gameFlow() {
     }
   }
 
-  while (num < 9) {
-    if (!winner.isFound) {
-      userInput();
-      checkWinner();
-    } else {
-      break;
+  function drawBoard() {
+    const div = document.getElementById("boardContainer");
+
+    for (let i = 0; i < 3; i++) {
+      let row = document.createElement("div");
+      row.style.width = div.offsetWidth + "px";
+      row.style.height = div.offsetHeight / 3 + "px";
+      row.style.boxSizing = "border-box";
+      row.style.display = "flex";
+      row.style.display = "row";
+      div.appendChild(row);
+
+      for (let j = 0; j < 3; j++) {
+        let sqr = document.createElement("div");
+        sqr.style.height = row.offsetHeight;
+        sqr.style.width = row.offsetWidth / 3 + "px";
+        sqr.style.border = "1px solid black";
+        sqr.style.boxSizing = "border-box";
+        sqr.style.textAlign = "center";
+        sqr.style.fontSize = "130px";
+
+        sqr.addEventListener("click", () => {
+          const rowIndex = Array.from(div.children).indexOf(row);
+          const sqrIndex = Array.from(row.children).indexOf(sqr);
+
+          userInput(rowIndex, sqrIndex, player1Turn ? "❌" : "⭕️");
+          sqr.innerHTML = board[rowIndex][sqrIndex];
+        });
+        row.appendChild(sqr);
+      }
     }
-    num++;
   }
 
-  if (winner.isFound) {
-    if (winner.person == player1.sign) {
-      console.log(`WINNER is ${player1.name}`);
-    }
-  }
+  // while (num < 9) {
+  //   if (!winner.isFound) {
+  //     userInput();
+  //     checkWinner();
+  //   } else {
+  //     break;
+  //   }
+  //   num++;
+  // }
+
+  // if (winner.isFound) {
+  //   if (winner.person == player1.sign) {
+  //     console.log(`WINNER is ${player1.name}`);
+  //   }
+  // }
+  drawBoard();
 }
 
 gameFlow();
