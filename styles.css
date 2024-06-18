@@ -1,4 +1,13 @@
 body {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+}
+
+#boardContainer {
+  width: 50%;
+  height: 50%;
+  background-color: aquamarine;
 }
